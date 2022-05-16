@@ -7,6 +7,18 @@ def action(x, a):
         S += (x[j + 1] - x[j])**2 / (2 * a) + 0.5 * a * x[j] * x[j]
     return S
 
+'''
+def S(i, x):
+    jp = (j+1) % x.shape[0]
+    jm = (j-1) % x.shape[0]
+
+
+def update(x):
+    for i in range(x.shape[0]):
+        old_x = x[i]
+        old_S = action(x)<++>
+'''
+
 a = 0.5
 N = 20
 t_0 = 0.0
@@ -16,7 +28,7 @@ equi_cycles = int(1e4)
 mc_cycles = int(1e4)
 n_corr = 20
 n_bins = 10
-step_size = 0.025
+step_size = 0.25     # 0.025 originally originally
 
 # Init positions array
 x = np.zeros(N)
@@ -30,7 +42,8 @@ for t in range(equi_cycles):
     x_new = x + np.random.uniform(-step_size, step_size, x.shape[0])
     
     dif = action(x_new, a) - action(x, a)
-    if dif <= 0 or np.random.rand() <= np.exp(- dif):
+    #if dif <= 0 or np.random.rand() <= np.exp(- dif):
+    if np.exp(-dif) >= np.random.rand():    # If dif < 0 exp(-dif) > 1 >= rand() is always true
         x = x_new
 
 for n in range(n_bins):
