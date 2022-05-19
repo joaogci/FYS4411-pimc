@@ -61,5 +61,10 @@ int main(int argc, char* argv[]){
     cout << "Obtained first exited energy lvl: " << log(corr[0] / corr[1]) / a << endl;
     cout << "Expected first exited energy lvl: 1.0" << endl;
 
+    // Free G arrays
+    for (int i=0; i<N_cf; i++){
+        delete G[i];
+    }
+
     return 0;
 }
