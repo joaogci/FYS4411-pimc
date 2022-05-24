@@ -3,10 +3,14 @@
 #include <stdlib.h>
 #include <math.h>
 #include <random>
+#include <ctime>
+#include <fstream>
+#include <string.h>
 
 using namespace std;
 
-mt19937 gen;
+unsigned int seed = (unsigned int) time(NULL);      // Seed given by CPU time
+mt19937 gen (seed);
 uniform_real_distribution<double> uniform(0.0, 1.0);
 
 double S(int j, double *x, int N, double a){
@@ -27,10 +31,12 @@ void update(double *x, int N, double a,
 
     double old_x, old_Sj, dS;
     int j;
-    for (j = 0; j<N; j++){
+    //for (j = 0; j<N; j++){    // Changes initial and final pos
+    //for (j = 1; j<N-1; j++){    // Fixed initial and final pos
+    for (j = 1; j<N; j++){    // Fixed initial, periodic
         old_x = x[j];
         old_Sj = S(j, x, N, a);
-        x[j] += eps(gen) ;
+        x[j] += eps(gen);
         dS = S(j, x, N, a) - old_Sj;
 
         if(exp(-dS) < uniform(gen)){    // Metropolis
