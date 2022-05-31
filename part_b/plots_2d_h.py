@@ -7,11 +7,11 @@ matplotlib.rcParams['mathtext.fontset'] = 'stix'
 matplotlib.rcParams['font.family'] = 'STIXGeneral'
 
 FOLDER = "results/"
-SAVE_FOLDER = "figures/"
+SAVE_FOLDER = "figures/2D_h/"
 
 filenames = ["2D_heisenberg_L16_h0_delta0.csv", "2D_heisenberg_L16_h0.25_delta1.csv", "2D_heisenberg_L16_h0.5_delta1.csv", "2D_heisenberg_L16_h1_delta1.csv", "2D_heisenberg_L16_h2_delta1.csv"]
 
-T_vals = 50
+T_vals = 25
 L_vals = len(filenames)
 L = np.array([16])
 h = np.array([0.0, 0.25, 0.5, 1.0, 2.0])
@@ -59,77 +59,85 @@ for i, filename in enumerate(filenames):
         T[i, :] = 1.0 / T[i, :]
 
 
-plt.figure(1)
+plt.figure(1, figsize=(3, 2.25))
 for i in range(h_vals):
-    plt.plot(T[i, :], E[i, :], ".-", label=rf"$h=${h[i]}")
-plt.xlabel(r"$T/J$", fontsize=16)
-plt.ylabel(r"$\langle E \rangle$", fontsize=16)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend(fontsize=16)
+    plt.plot(T[i, :], E[i, :], ".-") # , label=rf"$h/J=${h[i]}")
+plt.xlabel(r"$T/J$", fontsize=10)
+plt.ylabel(r"$\langle E \rangle$", fontsize=10)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.legend(fontsize=14)
+plt.savefig(SAVE_FOLDER + "2D_heisenberg_h_E_vs_T.eps", bbox_inches="tight")
 
-plt.figure(2)
+plt.figure(2, figsize=(3, 2.25))
 for i in range(h_vals):
-    plt.plot(T[i, :], C[i, :], ".-", label=rf"$h=${h[i]}")
-plt.xlabel(r"$T/J$", fontsize=16)
-plt.ylabel(r"$\langle C \rangle$", fontsize=16)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend(fontsize=16)
+    plt.plot(T[i, :], C[i, :], ".-") # , label=rf"$h/J=${h[i]}")
+plt.xlabel(r"$T/J$", fontsize=10)
+plt.ylabel(r"$\langle C \rangle$", fontsize=10)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.legend(fontsize=14)
+plt.savefig(SAVE_FOLDER + "2D_heisenberg_h_C_vs_T.eps", bbox_inches="tight")
 
-plt.figure(3)
+plt.figure(3, figsize=(3, 2.25))
 for i in range(h_vals):
-    plt.plot(T[i, :], m[i, :], ".-", label=rf"$h=${h[i]}")
-plt.xlabel(r"$T/J$", fontsize=16)
-plt.ylabel(r"$\langle m \rangle$", fontsize=16)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend(fontsize=16)
+    plt.plot(T[i, :], m[i, :], ".-") # , label=rf"$h/J=${h[i]}")
+plt.xlabel(r"$T/J$", fontsize=10)
+plt.ylabel(r"$\langle m \rangle$", fontsize=10)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.legend(fontsize=14)
+plt.savefig(SAVE_FOLDER + "2D_heisenberg_h_m_vs_T.eps", bbox_inches="tight")
 
-plt.figure(4)
+plt.figure(4, figsize=(3, 2.25))
 for i in range(h_vals):
-    plt.plot(T[i, :], m2[i, :], ".-", label=rf"$h=${h[i]}")
-plt.xlabel(r"$T/J$", fontsize=16)
-plt.ylabel(r"$\langle m^2 \rangle$", fontsize=16)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend(fontsize=16)
+    plt.plot(T[i, :], m2[i, :], ".-") # , label=rf"$h/J=${h[i]}")
+plt.xlabel(r"$T/J$", fontsize=10)
+plt.ylabel(r"$\langle m^2 \rangle$", fontsize=10)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.legend(fontsize=14)
+plt.savefig(SAVE_FOLDER + "2D_heisenberg_h_m2_vs_T.eps", bbox_inches="tight")
 
-plt.figure(5)
+plt.figure(5, figsize=(3, 2.25))
 for i in range(h_vals):
-    plt.plot(T[i, :], ms[i, :], ".-", label=rf"$h=${h[i]}")
-plt.xlabel(r"$T/J$", fontsize=16)
-plt.ylabel(r"$\langle m \rangle_s$", fontsize=16)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend(fontsize=16)
+    plt.plot(T[i, :], ms[i, :], ".-") # , label=rf"$h/J=${h[i]}")
+plt.xlabel(r"$T/J$", fontsize=10)
+plt.ylabel(r"$\langle m \rangle_s$", fontsize=10)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.legend(fontsize=14)
+plt.savefig(SAVE_FOLDER + "2D_heisenberg_h_ms_vs_T.eps", bbox_inches="tight")
 
-plt.figure(6)
+plt.figure(6, figsize=(3, 2.25))
 for i in range(h_vals):
-    plt.plot(T[i, :], m2s[i, :], ".-", label=rf"$h=${h[i]}")
-plt.xlabel(r"$T/J$", fontsize=16)
-plt.ylabel(r"$\langle m^2 \rangle_s$", fontsize=16)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend(fontsize=16)
+    plt.plot(T[i, :], m2s[i, :], ".-") # , label=rf"$h/J=${h[i]}")
+plt.xlabel(r"$T/J$", fontsize=10)
+plt.ylabel(r"$\langle m^2 \rangle_s$", fontsize=10)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.legend(fontsize=14)
+plt.savefig(SAVE_FOLDER + "2D_heisenberg_h_m2s_vs_T.eps", bbox_inches="tight")
 
-plt.figure(7)
+plt.figure(7, figsize=(3, 2.25))
 for i in range(h_vals):
-    plt.plot(T[i, :], m_sus[i, :], ".-", label=rf"$h=${h[i]}")
-plt.xlabel(r"$T/J$", fontsize=16)
-plt.ylabel(r"$\langle \chi \rangle$", fontsize=16)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend(fontsize=16)
+    plt.plot(T[i, :], m_sus[i, :], ".-") # , label=rf"$h/J=${h[i]}")
+plt.xlabel(r"$T/J$", fontsize=10)
+plt.ylabel(r"$\langle \chi \rangle$", fontsize=10)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.legend(fontsize=14)
+plt.savefig(SAVE_FOLDER + "2D_heisenberg_h_m_sus_vs_T.eps", bbox_inches="tight")
 
-# plt.figure(8)
-# for i in range(h_vals):
-#     plt.plot(T[i, :], binder[i, :], ".-", label=rf"$h=${h[i]}")
-# plt.xlabel(r"$T/J$", fontsize=16)
-# plt.ylabel(r"$U_L$", fontsize=16)
-# plt.xticks(fontsize=16)
-# plt.yticks(fontsize=16)
-# plt.legend(fontsize=16)
+plt.figure(8, figsize=(3, 2.25))
+for i in range(h_vals):
+    plt.plot(T[i, :], binder[i, :], ".-") # , label=rf"$h/J=${h[i]}")
+plt.xlabel(r"$T/J$", fontsize=10)
+plt.ylabel(r"$U_L$", fontsize=10)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.legend(fontsize=14)
+plt.savefig(SAVE_FOLDER + "2D_heisenberg_h_binder_vs_T.eps", bbox_inches="tight")
 
-plt.show()
+# plt.show()
 
